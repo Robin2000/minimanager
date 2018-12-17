@@ -157,7 +157,7 @@ $dir = ($dir) ? 0 : 1;
 
 		else
 			$result = $sqlc->query('
-				SELECT c.guid, c.name, c.race, c.class, c.zone, c.map, c.level, c.account, c.gender, c.totalHonorPoints,
+				SELECT c.guid, c.name, c.race, c.class, c.zone, c.map, c.level, c.account, c.gender, c.honorRankPoints,
 					COALESCE(guild_member.guildid,0) AS guildid 
 				FROM characters c
 					LEFT JOIN guild_member ON guild_member.guid = c.guid 
@@ -186,7 +186,7 @@ $output .= '
 		<th width="1%"><a href="index.php?start='.$start.'&amp;start_m='.$start_m.'&amp;order_by=race&amp;dir='.$dir.'"'.($order_by==='race' ? ' class="'.$order_dir.'"' : '').'>'.$lang_index['race'].'</a></th>
 		<th width="1%"><a href="index.php?start='.$start.'&amp;start_m='.$start_m.'&amp;order_by=class&amp;dir='.$dir.'"'.($order_by==='class' ? ' class="'.$order_dir.'"' : '').'>'.$lang_index['class'].'</a></th>
 		<th width="5%"><a href="index.php?start='.$start.'&amp;start_m='.$start_m.'&amp;order_by=level&amp;dir='.$dir.'"'.($order_by==='level' ? ' class="'.$order_dir.'"' : '').'>'.$lang_index['level'].'</a></th>
-		<th width="1%"><a href="index.php?start='.$start.'&amp;start_m='.$start_m.'&amp;order_by=totalHonorPoints&amp;dir='.$dir.'"'.($order_by==='totalHonorPoints' ? ' class="'.$order_dir.'"' : '').'>'.$lang_index['rank'].'</a></th>
+		<th width="1%"><a href="index.php?start='.$start.'&amp;start_m='.$start_m.'&amp;order_by=honorRankPoints&amp;dir='.$dir.'"'.($order_by==='honorRankPoints' ? ' class="'.$order_dir.'"' : '').'>'.$lang_index['rank'].'</a></th>
 		<th width="15%"><a href="index.php?start='.$start.'&amp;start_m='.$start_m.'&amp;order_by=guildid&amp;dir='.$dir.'"'.($order_by==='gname' ? ' class="'.$order_dir.'"' : '').'>'.$lang_index['guild'].'</a></th>
 		<th width="20%"><a href="index.php?start='.$start.'&amp;start_m='.$start_m.'&amp;order_by=map&amp;dir='.$dir.'"'.($order_by==='map '.$order_dir.', zone' ? ' class="'.$order_dir.'"' : '').'>'.$lang_index['map'].'</a></th>
 		<th width="25%"><a href="index.php?start='.$start.'&amp;start_m='.$start_m.'&amp;order_by=zone&amp;dir='.$dir.'"'.($order_by==='zone '.$order_dir.', map' ? ' class="'.$order_dir.'"' : '').'>'.$lang_index['zone'].'</a></th>';
@@ -207,7 +207,7 @@ $output .= '
 			if($order_by == 'ip')
 			{
 				$temp = $sqlc->fetch_assoc($sqlc->query('
-					SELECT characters.guid, characters.name, characters.race, characters.class, characters.zone, characters.map, characters.level, characters.account, characters.gender, characters.totalHonorPoints,
+					SELECT characters.guid, characters.name, characters.race, characters.class, characters.zone, characters.map, characters.level, characters.account, characters.gender, characters.honorRankPoints,
 						COALESCE(guild_member.guildid,0) AS guildid 
 					FROM characters LEFT JOIN guild_member ON guild_member.guid = characters.guid 
 					WHERE characters.online= 1 '.($gm_online == '0' ? 'AND characters.extra_flags &1 = 0 ' : '').$order_side.' and account = '.$char['id']));
@@ -248,7 +248,7 @@ $output .= '
 		</td>
 		<td>'.char_get_level_color($char['level']).'</td>
 		<td>
-			<span onmouseover="toolTip(\''.char_get_pvp_rank_name($char['totalHonorPoints'], char_get_side_id($char['race'])).'\', \'item_tooltip\')" onmouseout="toolTip()" style="color: white;"><img src="img/ranks/rank'.char_get_pvp_rank_id($char['totalHonorPoints'], char_get_side_id($char['race'])).'.gif" alt="" /></span>
+			<span onmouseover="toolTip(\''.char_get_pvp_rank_name($char['honorRankPoints'], char_get_side_id($char['race'])).'\', \'item_tooltip\')" onmouseout="toolTip()" style="color: white;"><img src="img/ranks/rank'.char_get_pvp_rank_id($char['honorRankPoints'], char_get_side_id($char['race'])).'.gif" alt="" /></span>
 		</td>
 		<td>
 			<a href="guild.php?action=view_guild&amp;error=3&amp;id='.$char['guildid'].'">'.htmlentities($guild_name).'</a>

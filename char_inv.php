@@ -75,7 +75,7 @@ $output .= '
 			// main data that we need for this page
 			$result = $sqlc->query('
 				SELECT ci.bag, ci.slot, ci.item, ci.item_template,
-					SUBSTRING_INDEX(SUBSTRING_INDEX(data, " ", 15), " ", -1) as stack_count
+				ii.count as stack_count
 					FROM character_inventory ci 
 						INNER JOIN item_instance ii 
 						ON ii.guid = ci.item

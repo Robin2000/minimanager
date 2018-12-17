@@ -42,7 +42,7 @@ function top100($realmid, &$sqlr, &$sqlc)
 
   $result = $sqlc->query('SELECT characters.guid, characters.name, race, class, gender, level, totaltime, online, money, health,
 							power1,
-							arenaPoints as arena, totalHonorPoints as honor, totalKills as kills, 
+							0 as arena, honorRankPoints as honor, 0 as kills, 
     guildid as gname,
     strength AS str,
     agility AS agi,
@@ -59,8 +59,6 @@ function top100($realmid, &$sqlr, &$sqlc)
     power3 AS max_dmg,
     power4 AS min_ranged_dmg,
     power5 AS max_ranged_dmg,
-    power6 AS expertise,
-    power7 AS off_expertise,
     resHoly AS holy,
     resFire AS fire,
     resNature AS nature,
@@ -206,8 +204,8 @@ FROM characters, character_stats, guild_member WHERE guild_member.guid = charact
                 <th width="6%"><a href="top100.php?type='.$type.'&amp;order_by=max_dmg&amp;start='.$start.'&amp;dir='.$dir.'"'.($order_by==='max_dmg' ? ' class="'.$order_dir.'"' : '').'>'.$lang_top['max_dmg'].'</a></th>
                 <th width="10%"><a href="top100.php?type='.$type.'&amp;order_by=melee_crit&amp;start='.$start.'&amp;dir='.$dir.'"'.($order_by==='melee_crit' ? ' class="'.$order_dir.'"' : '').'>'.$lang_top['crit'].'</a></th>
                 <th width="5%"><a href="top100.php?type='.$type.'&amp;order_by=melee_hit&amp;start='.$start.'&amp;dir='.$dir.'"'.($order_by==='melee_hit' ? ' class="'.$order_dir.'"' : '').'>'.$lang_top['hit'].'</a></th>
-                <th width="5%"><a href="top100.php?type='.$type.'&amp;order_by=expertise&amp;start='.$start.'&amp;dir='.$dir.'"'.($order_by==='expertise' ? ' class="'.$order_dir.'"' : '').'>'.$lang_top['expertise'].'</a></th>
-                <th width="9%"><a href="top100.php?type='.$type.'&amp;order_by=off_expertise&amp;start='.$start.'&amp;dir='.$dir.'"'.($order_by==='off_expertise' ? ' class="'.$order_dir.'"' : '').'>'.$lang_top['off_expertise'].'</a></th>
+                <th width="5%"></th>
+                <th width="9%"></th>
               </tr>';
   }
   elseif ($type === 'crit_hit')

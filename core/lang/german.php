@@ -473,17 +473,6 @@ function lang_char()
     'move_to' => 'Teleportieren nach (.tele Ortsname)',
     'max_acc' => 'The account you are trying to move this character to has the max ammount of players in it.',
     'no_tp_location' => 'Keinen Teleport-Ort mit diesem Namen gefunden.',
-    // ---- char_achieve.php ----
-    'show' => 'Show',
-    'all' => 'All',
-    'earned' => 'Earned',
-    'incomplete' => 'Incomplete',
-    'summary' => 'Summary',
-    'recent' => 'Recent',
-    'achievements' => 'Achievements',  // <---- TODO
-    'achievement_title' => 'Achievement Title',    // <---- TODO
-    'achievement_points' => 'Punkte',
-    'achievement_date' => 'Date',    // <---- TODO
   );
   return $lang_char;
 }

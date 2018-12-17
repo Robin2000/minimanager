@@ -44,27 +44,27 @@ $sql_search_limit =  100;                         // limit number of maximum sea
 
 $mmfpm_db['addr']     = '127.0.0.1:3306';         // SQL server IP:port this DB located on
 $mmfpm_db['user']     = 'root';                   // SQL server login this DB located on
-$mmfpm_db['pass']     = 'x';                      // SQL server pass this DB located on
+$mmfpm_db['pass']     = 'java112233';                      // SQL server pass this DB located on
 $mmfpm_db['name']     = 'mmfpm';                  // MiniManager DB name
 $mmfpm_db['encoding'] = 'utf8';                   // SQL connection encoding
 
 $realm_db['addr']     = '127.0.0.1:3306';         // SQL server IP:port this realmd located on
 $realm_db['user']     = 'root';                   // SQL server login this realmd located on
-$realm_db['pass']     = 'x';                      // SQL server pass this realmd located on
+$realm_db['pass']     = 'java112233';                      // SQL server pass this realmd located on
 $realm_db['name']     = 'realmd';                 // realmd DB name
 $realm_db['encoding'] = 'utf8';                   // SQL connection encoding
 
           // position in array must represent realmd ID
 $world_db[1]['addr']  = '127.0.0.1:3306'; // SQL server IP:port this DB located on
 $world_db[1]['user']  = 'root';           // SQL server login this DB located on
-$world_db[1]['pass']  = 'x';              // SQL server pass this DB located on
-$world_db[1]['name']  = 'mangos';         // World Database name
+$world_db[1]['pass']  = 'java112233';              // SQL server pass this DB located on
+$world_db[1]['name']  = 'world_server1';         // World Database name
 $world_db[1]['encoding']  = 'utf8';           // SQL connection encoding
 
                // position in array must represent realmd ID
 $characters_db[1]['addr']     = '127.0.0.1:3306'; // SQL server IP:port this DB located on
 $characters_db[1]['user']     = 'root';           // SQL server login this DB located on
-$characters_db[1]['pass']     = 'x';              // SQL server pass this DB located on
+$characters_db[1]['pass']     = 'java112233';              // SQL server pass this DB located on
 $characters_db[1]['name']     = 'characters';     // Character Database name
 $characters_db[1]['encoding'] = 'utf8';           // SQL connection encoding
 
@@ -93,11 +93,11 @@ $characters_db[2]['encoding'] = 'utf8';           // SQL connection encoding
 $server[1]['addr']          = '127.0.0.1'; // Game Server IP, as seen by MiniManager, from your webhost
 $server[1]['addr_wan']      = '127.0.0.1'; // Game Server IP, as seen by clients - Must be external address
 $server[1]['game_port']     =  8085;       // Game Server port
-$server[1]['term_type']     = 'SSH';       // Terminal type - ("SSH"/"Telnet")
+$server[1]['term_type']     = 'Telnet';       // Terminal type - ("SSH"/"Telnet")
 $server[1]['term_port']     =  22;         // Terminal port
 $server[1]['telnet_port']   =  3443;       // Telnet port - Telnet settins are needed for sending InGame Mail.
-$server[1]['telnet_user']   = 'USER';      // Telnet username, must be all CAPS
-$server[1]['telnet_pass']   = 'pass';      // Telnet password
+$server[1]['telnet_user']   = 'ROBIN';      // Telnet username, must be all CAPS
+$server[1]['telnet_pass']   = '123';      // Telnet password
 $server[1]['rev']           = 'rev. ';     // MaNGOS rev. used
 $server[1]['both_factions'] =  true;       // Allow to see opponent faction characters. Affects only players.
 $server[1]['talent_rate']   =  1;          // Talent rate set for this server, needed for talent point calculation
@@ -360,7 +360,6 @@ $menu_array = array
 			array(	'char.php',				'character',	0,5,5,5),
 			array(	'char_inv.php',			'character',	0,5,5,5),
 			array(	'char_quest.php',		'character',	0,5,5,5),
-			array(	'char_achieve.php',		'character',	0,5,5,5),
 			array(	'char_skill.php',		'character',	0,5,5,5),
 			array(	'char_talent.php',		'character',	0,5,5,5),
 			array(	'char_rep.php',			'character',	0,5,5,5),

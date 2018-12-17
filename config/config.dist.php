@@ -1,7 +1,9 @@
 <?php
 
 
-//#############################################################################//// configuration note.
+//#############################################################################
+//
+// configuration note.
 //
 // Do not edit, move or delete this file.
 //
@@ -364,7 +366,6 @@ $menu_array = array
 			array(	'char.php',				'character',	0,5,5,5),
 			array(	'char_inv.php',			'character',	0,5,5,5),
 			array(	'char_quest.php',		'character',	0,5,5,5),
-			array(	'char_achieve.php',		'character',	0,5,5,5),
 			array(	'char_skill.php',		'character',	0,5,5,5),
 			array(	'char_talent.php',		'character',	0,5,5,5),
 			array(	'char_rep.php',			'character',	0,5,5,5),

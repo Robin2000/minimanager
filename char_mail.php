@@ -92,10 +92,11 @@ $output .= '
 
 			$query = $sqlc->query('
 				SELECT a.id as id, a.messageType as messagetype, a.sender as sender,
-						a.subject as subject, a.body as body, a.has_items as hasitems, a.money as money, a.cod as cod, a.checked as checked,
+						a.subject as subject, it.text as body, a.has_items as hasitems, a.money as money, a.cod as cod, a.checked as checked,
 						b.item_template as itemtemplate
 				FROM mail a
 				INNER JOIN mail_items b ON a.id = b.mail_id
+				LEFT JOIN item_text it ON a.itemTextId=it.id
 				WHERE a.receiver = '.$id .'
 				LIMIT '.$start.', '.$itemperpage.'');
 

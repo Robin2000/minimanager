@@ -55,7 +55,7 @@ $sqlm->connect($mmfpm_db['addr'], $mmfpm_db['user'], $mmfpm_db['pass'], $mmfpm_d
             $result = $sqlc->query("
 				SELECT c.guid, c.account, c.name, c.race, c.class, c.level, c.gender, c.online, c.money, c.totaltime,
 					c.position_x, c.position_y, c.position_z, c.map, c.zone,
-					c.totalHonorpoints, c.totalKills, c.arenaPoints, c.equipmentCache,
+					c.honorRankPoints,  c.equipmentCache,
 					COALESCE(guild_member.guildid,0) AS guildid, COALESCE(guild_member.rank,0) AS grank
 				FROM characters  c LEFT JOIN guild_member ON c.guid = guild_member.guid 
 				WHERE c.guid = '$id'");
@@ -111,11 +111,7 @@ $sqlm->connect($mmfpm_db['addr'], $mmfpm_db['user'], $mmfpm_db['pass'], $mmfpm_d
                                     <tr>
                                         <td colspan=\"8\">{$lang_char['guild']}: $guild_name | {$lang_char['rank']}: $guild_rank</td>
                                     </tr>
-                                    <tr>
-                                        <td colspan=\"8\">{$lang_char['honor_points']}: <input type=\"text\" name=\"honor_points\" size=\"8\" maxlength=\"6\" value=\"{$char['totalHonorpoints']}\" />/
-                                            <input type=\"text\" name=\"arena_points\" size=\"8\" maxlength=\"6\" value=\"{$char['arenaPoints']}\" /> - {$lang_char['honor_kills']}: <input type=\"text\" name=\"total_kills\" size=\"8\" maxlength=\"6\" value=\"{$char['totalKills']}\" />
-                                        </td>
-                                    </tr>
+
                                     <tr>
                                         <td width=\"2%\"><input type=\"checkbox\" name=\"check[]\" value=\"a0\" /></td><td width=\"18%\">{$lang_item['head']}<br /><a href=\"$item_datasite{$eq_data[EQ_DATA_OFFSET_EQU_HEAD]}\" target=\"_blank\">".get_item_name($eq_data[EQ_DATA_OFFSET_EQU_HEAD])."</a></td>
                                         <td width=\"18%\">{$lang_item['gloves']}<br /><a href=\"$item_datasite{$eq_data[EQ_DATA_OFFSET_EQU_GLOVES]}\" target=\"_blank\">".get_item_name($eq_data[EQ_DATA_OFFSET_EQU_GLOVES])."</a></td><td width=\"2%\"><input type=\"checkbox\" name=\"check[]\" value=\"a9\" /></td>
@@ -451,7 +447,7 @@ function do_edit_char(&$sqlr, &$sqlc)
 
                 $result = $sqlc->query("
 					UPDATE characters 
-					SET equipmentCache = '$data', name = '$new_name', $teleport totaltime = '$new_tot_time', money = '$new_money', arenaPoints = '$new_arena_points', totalHonorPoints = '$new_honor_points', totalKills = '$new_total_kills' 
+					SET equipmentCache = '$data', name = '$new_name', $teleport totaltime = '$new_tot_time', money = '$new_money',  honorRankPoints = '$new_honor_points' 
 					WHERE guid = $id");
                 $sqlc->close();
                 unset($sqlc);

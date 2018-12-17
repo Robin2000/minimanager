@@ -76,13 +76,13 @@ unset($result_1);
 			// main data that we need for this page
             $result = $sqlc->query('
 				SELECT c.account, c.name, c.race, c.class, c.level, c.zone, c.map, c.online, c.totaltime, c.gender,
-					c.totalHonorPoints, c.arenaPoints, c.totalKills,
-					cs.blockPct, cs.dodgePct, cs.parryPct, cs.critPct, cs.rangedCritPct, cs.spellCritPct,
+					c.honorRankPoints, 
+					cs.blockPct, cs.dodgePct, cs.parryPct, cs.critPct, cs.rangedCritPct, 
 					cs.strength, cs.agility, cs.stamina, cs.intellect, cs.spirit, 
-					c.health, c.power1, c.power2, c.power3, c.power4, c.power5, c.power6, c.power7,
+					c.health, c.power1, c.power2, c.power3, c.power4, c.power5,
 					cs.maxhealth, cs.maxpower1, cs.maxpower2, cs.maxpower3, cs.maxpower4, cs.maxpower5, cs.maxpower6, cs.maxpower7,
 					cs.resHoly, cs.resFire, cs.resNature, cs.resFrost, cs.resShadow, cs.resArcane, 
-					cs.attackPower, cs.rangedAttackPower, cs.spellPower, cs.armor,
+					cs.attackPower, cs.rangedAttackPower, cs.armor,
 					c.equipmentCache, 
 					COALESCE(guild_member.guildid,0) AS guildid, COALESCE(guild_member.rank,0) AS rank
 				FROM characters c
@@ -123,8 +123,6 @@ $dodge       = round($char['dodgePct'],2);
 $parry       = round($char['parryPct'],2);
 $crit        = round($char['critPct'],2);
 $ranged_crit = round($char['rangedCritPct'],2);
-$spell_crit = round($char['spellCritPct'],2);
-$spell_damage = $char['spellPower'];
 $rage       = round($char['power2'] / 10);
 $maxrage    = round($char['maxpower2'] / 10);
       
@@ -272,7 +270,7 @@ $output .= '
 				</td>
 				<td colspan="4">
 					<br />'.get_map_name($char['map'], $sqlm).' - '.get_zone_name($char['zone'], $sqlm).'
-					<br />'.$lang_char['honor_points'].': '.$char['totalHonorPoints'].' / '.$char['arenaPoints'].' - '.$lang_char['honor_kills'].': '.$char['totalKills'].'
+					<br />'.$lang_char['honor_points'].': '.$char['honorRankPoints'].' / '.' - '.' '.'
 					<br />'.$lang_char['guild'].': '.$guild_name.' | '.$lang_char['rank'].': '.htmlentities($guild_rank).'
 					<br />'.(($char['online']) ? '<img src="img/up.gif" onmousemove="toolTip(\'Online\', \'item_tooltip\')" onmouseout="toolTip()" alt="online" />' : '<img src="img/down.gif" onmousemove="toolTip(\'Offline\', \'item_tooltip\')" onmouseout="toolTip()" alt="offline" />');
 			if ($showcountryflag)
@@ -507,14 +505,11 @@ $output .= '
 						'.$lang_char['spell_d'].':<br />
 						'.$lang_char['spell_heal'].':<br />
 						'.$lang_char['spell_hit'].':<br />
-						'.$lang_char['spell_crit'].':<br />
 						'.$lang_char['spell_haste'].'
 					</div>
 					<div class="gradient_pp">
-						'.$spell_damage.'<br />
 						'.$char_data[CHAR_DATA_OFFSET_SPELL_HEAL].'<br />
 						'.$char_data[CHAR_DATA_OFFSET_SPELL_HIT].'<br />
-						'.$spell_crit.'%<br />
 						'.$char_data[CHAR_DATA_OFFSET_SPELL_HASTE_RATING].'
 					</div>
 				</td>

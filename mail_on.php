@@ -37,8 +37,8 @@ function do_search()
   $dir = ($dir) ? 0 : 1;
   //==========================$_GET and SECURE end=============================
 
-  $query = $sql->query("SELECT a.id, a.messageType, a.sender, a.receiver, a.subject, a.body, a.has_items, a.money, a.cod, a.checked, b.item_template
-    FROM mail a LEFT JOIN mail_items b ON a.id = b.mail_id ORDER BY $order_by $order_dir LIMIT $start, $itemperpage");
+  $query = $sql->query("SELECT a.id, a.messageType, a.sender, a.receiver, a.subject, it.text as body, a.has_items, a.money, a.cod, a.checked, b.item_template
+    FROM mail a LEFT JOIN mail_items b ON a.id = b.mail_id LEFT JOIN item_text it ON a.itemTextId=it.id ORDER BY $order_by $order_dir LIMIT $start, $itemperpage");
   $total_found = $sql->num_rows($query);
   $this_page = $sql->num_rows($query);
   $query_1 = $sql->query("SELECT count(*) FROM `mail`");
@@ -170,9 +170,10 @@ function search() {
 
  $query_1 = $sql->query("SELECT count(*) FROM `mail`");
 
- $query = $sql->query("SELECT a.id, a.messageType, a.sender, a.receiver, a.subject, a.body, a.has_items, a.money, a.cod, a.checked, b.item_template
+ $query = $sql->query("SELECT a.id, a.messageType, a.sender, a.receiver, a.subject, it.text as body, a.has_items, a.money, a.cod, a.checked, b.item_template
             FROM mail a
             LEFT JOIN mail_items b ON a.id = b.mail_id
+            LEFT JOIN item_text it ON a.itemTextId=it.id
             WHERE $search_by
             ORDER BY $order_by $order_dir LIMIT $start, $itemperpage");
 

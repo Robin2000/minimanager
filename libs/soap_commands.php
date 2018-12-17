@@ -280,6 +280,5 @@
 	$commands['instance listbinds'] = array(3, "Syntax: .instance listbinds   Lists the binds of the selected player.");
 	$commands['server info'] = array(0, "Syntax: .server info  Display server version and the number of connected players.");
 	$commands['debug getvalue'] = array(3, "Syntax: .debug getvalue #field #isInt  Get the field #field of the selected creature. If no creature is selected, get the content of your field.  Use a #isInt of value 1 if the expected field content is an integer.");
-	$commands['flusharenapoints'] = array(3, "Syntax: .flusharenapoints  Use it to distribute arena points based on arena team ratings, and start a new week.");
-	$commands['character delete'] = array(3, "Syntax: .flusharenapoints  Use it to distribute arena points based on arena team ratings, and start a new week.");
+	$commands['character delete'] = array(3, "Syntax: .character delete  Use it to delete character.");
 ?>

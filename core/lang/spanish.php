@@ -473,17 +473,6 @@ function lang_char()
     'move_to' => 'Mover a(.tele nombre de la ubicacion)',
     'max_acc' => 'La cuenta que está intentando mover el personaje tiene la cantidad maxima de jugadores en el mismo.',
     'no_tp_location' => 'No teleport location found using provided name.',
-    // ---- char_achieve.php ----
-    'show' => 'Mostrar',
-    'all' => 'Todo',
-    'earned' => 'Ganados',
-    'incomplete' => 'Incompleto',
-    'summary' => 'Resumen',
-    'recent' => 'Recientes',
-    'achievements' => 'Logros',
-    'achievement_title' => 'Titulo de Logro',
-    'achievement_points' => 'Puntos',
-    'achievement_date' => 'Fecha',
   );
   return $lang_char;
 }

@@ -86,7 +86,7 @@ $output .= '
 </ul>
 </div>
 <div id="tab_content">';
-$result = $sqlc->query('SELECT gbi.SlotId, gbi.item_entry, SUBSTRING_INDEX(SUBSTRING_INDEX(data, " ", 15), " ", -1) as stack_count FROM guild_bank_item gbi INNER JOIN item_instance ii on ii.guid = gbi.item_guid WHERE gbi.guildid = '.$guild_id.' AND TabID = '.$current_tab.'');
+$result = $sqlc->query('SELECT gbi.SlotId, gbi.item_entry, ii.count as stack_count FROM guild_bank_item gbi INNER JOIN item_instance ii on ii.guid = gbi.item_guid WHERE gbi.guildid = '.$guild_id.' AND TabID = '.$current_tab.'');
 $gb_slots = array();
 while ($tab = $sqlc->fetch_assoc($result))
 if ($tab['item_entry'])

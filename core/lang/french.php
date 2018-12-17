@@ -472,18 +472,7 @@ function lang_char()
     'location' => 'Emplacement',
     'move_to' => 'Téleporter vers (.tele location name)',
     'max_acc' => 'Le compte vers lequel vous essayez de déplacer ce personnage a atteint le nombre de personnages maximum autorisé.',
-    'no_tp_location' => 'Aucun emplacement de téléport trouvé avec ce nom.',
-    // ---- char_achieve.php ----
-    'show' => 'Afficher',
-    'all' => 'Tous',
-    'earned' => 'Gagnés',
-    'incomplete' => 'Incomplets',
-    'summary' => 'Sommaire',
-    'recent' => 'Récent(s)',
-    'achievements' => 'Hauts Faits',
-    'achievement_title' => 'Haut Fait',
-    'achievement_points' => 'Points',
-    'achievement_date' => 'Date',
+    'no_tp_location' => 'Aucun emplacement de téléport trouvé avec ce nom.'
   );
   return $lang_char;
 }
